@@ -1,0 +1,16 @@
+const assert = require('node:assert/strict');
+const path = require('node:path');
+const { readCsv } = require('../src/csv');
+const { run, mondayOf, OUTPUT_COLUMNS } = require('../src/analyzer');
+const root = path.resolve(__dirname, '..');
+assert.equal(mondayOf('2025-02-26'), '2025-02-24');
+assert.equal(mondayOf('2025-03-02'), '2025-02-24');
+const result = run({ dataDir: path.join(root, 'data'), outputFile: path.join(root, 'output', 'shipping_cost_analysis.csv') });
+const rows = readCsv(path.join(root, 'output', 'shipping_cost_analysis.csv'));
+assert.equal(rows.length, result.stats.routeWeeks);
+assert.ok(rows.length > 0);
+assert.deepEqual(Object.keys(rows[0]), OUTPUT_COLUMNS);
+assert.ok(rows.every(r => ['Yes', 'No', 'No (justified)'].includes(r.flagged)));
+assert.ok(rows.every(r => r.flagged !== 'No (justified)' || r.matched_note_id !== ''));
+assert.ok(rows.every(r => r.flagged !== 'Yes' || r.matched_note_id === ''));
+console.log('Smoke tests passed:', JSON.stringify(result.stats));

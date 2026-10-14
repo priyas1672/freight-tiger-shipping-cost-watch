@@ -1,0 +1,18 @@
+{
+  "name": "freight-tiger-shipping-cost-watch",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Deterministic shipping-cost anomaly detector with evidence-grounded context-note retrieval",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node test/smoke-test.js",
+    "repro": "node src/reproducibility.js",
+    "eval": "node test/evaluation.js",
+    "ask": "node src/assistant.js",
+    "ai:explain": "node --env-file=.env src/gemini-enhance.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

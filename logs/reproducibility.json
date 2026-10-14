@@ -1,0 +1,18 @@
+{
+  "runs": [
+    {
+      "run": 1,
+      "sha256": "cbd4bfefb74110a979e0893818850c81d6bfd78cde1d6b4b413910232137ee44"
+    },
+    {
+      "run": 2,
+      "sha256": "cbd4bfefb74110a979e0893818850c81d6bfd78cde1d6b4b413910232137ee44"
+    },
+    {
+      "run": 3,
+      "sha256": "cbd4bfefb74110a979e0893818850c81d6bfd78cde1d6b4b413910232137ee44"
+    }
+  ],
+  "identical": true,
+  "note": "This implementation uses deterministic local calculations and rule-based note retrieval; it makes no LLM/API calls."
+}
